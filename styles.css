@@ -1,0 +1,30 @@
+*{
+    box-sizing: content-box;
+    margin: 0px;
+}
+body{
+   
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+    height:100vh; 
+    
+}
+.grid{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 30rem;
+    height: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+.cell{
+    padding: 0px;
+}
