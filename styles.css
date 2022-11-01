@@ -8,7 +8,7 @@ body{
     justify-content: center;
     align-items: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
 }
 #container{
     height: 100vh;
@@ -45,4 +45,5 @@ body{
 }
 .cell{
     padding: 0px;
+    
 }

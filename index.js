@@ -1,8 +1,9 @@
 let container = document.getElementById('container');
 let grid = document.createElement('div');
 let dimension = 16;
-let pencilColor = 'rgba(255, 99, 71, 1)'
+let pencilColor = 'rgba(255, 99, 71, 1)';
 let gridSelector = document.getElementById('dimension');
+let colorSelector = document.getElementById('change-color');
 
 //console.log(container);
 grid.classList.add('grid');
@@ -11,11 +12,14 @@ container.appendChild(grid);
 //console.log(grid.classList);
 
 
-
+// ------> GRID SETTINGS <------------
 gridSelector.addEventListener('change',changeGrid);
 gridSelector.onmousemove = function(){
     let gridSelectorDisplay = document.getElementById('grid-size');
-    gridSelectorDisplay.textContent = `${gridSelector.value} x ${gridSelector.value}`
+    gridSelectorDisplay.textContent = `${gridSelector.value} x ${gridSelector.value}`;
+}
+colorSelector.onchange = function (){
+    pencilColor = colorSelector.value;
 }
 
 // Drawing function
@@ -73,6 +77,9 @@ createCells(dimension);
 
 
 
+
+
+// ------------> GRID SETUP USING FLOAT AND CLEAR <-------------//
 // let gridCount = (8 * 8);
 // container = document.getElementById('container');
 
