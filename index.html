@@ -10,7 +10,12 @@
 </head>
 <body id="body">
     <div id="container" class="container">
-        <button onclick=resetgrid()>Reset</button>
+        <div id="menu_container">
+            <input type="color" name="change-color" id="change-color">
+            <button onclick=resetgrid()>Clear</button>
+            <label for="dimension">Grid Size <span id="grid-size">16 x 16</span></label>
+            <input type="range" name="dimension" id="dimension" min="1" max="100">
+        </div>
     </div>
 </body>
 </html>
