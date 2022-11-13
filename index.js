@@ -1,7 +1,7 @@
 let container = document.getElementById('container');
 let grid = document.createElement('div');
 let dimension = 16;
-let pencilColor = 'rgba(255, 99, 71, 1)';
+let pencilColor = 'black';
 let gridSelector = document.getElementById('dimension');
 let colorSelector = document.getElementById('change-color');
 
@@ -18,21 +18,41 @@ gridSelector.onmousemove = function(){
     let gridSelectorDisplay = document.getElementById('grid-size');
     gridSelectorDisplay.textContent = `${gridSelector.value} x ${gridSelector.value}`;
 }
-colorSelector.onchange = function (){
+colorSelector.oninput = function (){
     pencilColor = colorSelector.value;
 }
 
+// Color changing 
+let colorButtons = [...document.querySelectorAll('.color-switch')]
+let drawing ='';
+colorButtons.forEach(button => button.addEventListener('click', function(e){
+    let colorSelection  = document.getElementById('colorSelection');
+    let current = [...colorSelection.getElementsByClassName("active")];
+    if (current){
+        current[0].className = current[0].className.replace(" active","");
+    };
+    e.target.classList.add('active');
+    drawing = e.target.id;
+}));
 // Drawing function
 function draw(e){
-    e.target.style.backgroundColor = pencilColor;
+    
+    console.log(drawing)
+    if(drawing == 'default'){
+        e.target.style.backgroundColor = 'black';
+    }else if(drawing == 'eraser'){
+        e.target.style.backgroundColor = 'white';
+    }else if(drawing == 'rainbow'){
+        e.target.style.backgroundColor = `rgb(${Math.floor((Math.random() * 255) + 1)},${Math.floor((Math.random() * 255) + 1)},${Math.floor((Math.random() * 255) + 1)})`;
+    }
 }
 
 // function removeAllChildNodes(parent) {
-//     while (parent.firstChild) {
-//         parent.removeChild(parent.firstChild);
-//     }
-// }
-
+    //     while (parent.firstChild) {
+        //         parent.removeChild(parent.firstChild);
+        //     }
+        // }
+        
 //Change grid function for input listener.
 function changeGrid(e){
     let grid = document.querySelector('.grid');
@@ -63,10 +83,11 @@ function createCells(dimension){
     }
 }
 
-
-
-
 }
+
+//Color buttons
+
+console.log(colorButtons)
 
 //Reset Grid
 function resetgrid(){

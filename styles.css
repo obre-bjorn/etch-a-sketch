@@ -30,6 +30,23 @@ body{
     width: 30rem;
     gap:20px;
 }
+#colorSelection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.color-switch{
+    width: 50px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+}
+.color-switch.active{
+    background-color: #000;
+    color: white;
+}
+
 #dimension{
     display: inline;
 }
