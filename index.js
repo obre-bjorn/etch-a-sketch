@@ -4,6 +4,15 @@ let dimension = 16;
 let pencilColor = 'black';
 let gridSelector = document.getElementById('dimension');
 let colorSelector = document.getElementById('change-color');
+gridSelector.value = 16
+let downMouse;
+
+document.addEventListener('mousedown', ()=>{
+    downMouse = true;
+})
+document.addEventListener('mouseup', ()=>{
+    downMouse = false;
+})
 
 //console.log(container);
 grid.classList.add('grid');
@@ -18,13 +27,10 @@ gridSelector.onmousemove = function(){
     let gridSelectorDisplay = document.getElementById('grid-size');
     gridSelectorDisplay.textContent = `${gridSelector.value} x ${gridSelector.value}`;
 }
-colorSelector.oninput = function (){
-    pencilColor = colorSelector.value;
-}
 
 // Color changing 
 let colorButtons = [...document.querySelectorAll('.color-switch')]
-let drawing ='';
+let drawing ='default';
 colorButtons.forEach(button => button.addEventListener('click', function(e){
     let colorSelection  = document.getElementById('colorSelection');
     let current = [...colorSelection.getElementsByClassName("active")];
@@ -44,6 +50,8 @@ function draw(e){
         e.target.style.backgroundColor = 'white';
     }else if(drawing == 'rainbow'){
         e.target.style.backgroundColor = `rgb(${Math.floor((Math.random() * 255) + 1)},${Math.floor((Math.random() * 255) + 1)},${Math.floor((Math.random() * 255) + 1)})`;
+    }else if(drawing == 'change-color'){
+        e.target.style.backgroundColor = colorSelector.value
     }
 }
 
@@ -78,16 +86,17 @@ function createCells(dimension){
             styleAttribute.value = `height:${30/dimension}rem; width:${30/dimension}rem; background-color:white;`
             cell.classList.add('cell');
             cell.setAttributeNode(styleAttribute);
-            cell.addEventListener('mouseover',draw);
+            cell.addEventListener('mouseover',(e)=>{
+                if(downMouse){
+                    draw(e);
+                }
+            });
             columnArray[j].appendChild(cell);
     }
 }
 
 }
 
-//Color buttons
-
-console.log(colorButtons)
 
 //Reset Grid
 function resetgrid(){

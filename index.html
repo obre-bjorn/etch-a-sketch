@@ -11,15 +11,16 @@
 <body id="body">
     <div id="container" class="container">
         <div id="menu_container">
-            <label for="dimension">Grid Size <span id="grid-size">16 x 16</span></label>
-            <input type="range" name="dimension" id="dimension" min="1" max="100">
+            <h1>👨🏾‍🎨Etch-a-Sketch</h1>
             <label for="change-color">Pen Color</label>
-            <input type="color" name="change-color" id="change-color">
             <div id="colorSelection">
+                <input type="color" name="change-color" id="change-color" class="color-switch">
                 <button id ='rainbow' class="color-switch">Rainbow</button>
                 <button id = "eraser" class="color-switch">Eraser</button>
                 <button id = "default" class="color-switch active">Black</button>
             </div>
+            <label for="dimension">Grid Size <span id="grid-size">16 x 16</span></label>
+            <input type="range" name="dimension" id="dimension" min="1" max="100">
             <button onclick=resetgrid()>Clear</button>
         </div>
     </div>
